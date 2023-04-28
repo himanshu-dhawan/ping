@@ -1,13 +1,13 @@
 ---
 - name: Notepad++ installation Playbook
-  hosts: win_domain
+  hosts: 192.168.1.15
   tasks:
    - name: Installing Notepad++
      win_package:
        path: '\\192.168.1.45\softs\npp.8.5.2.Installer.x64'
        arguments: '/S'
        product_id: 'Notepad++'
-       creates_version: '7.95'
+       creates_version: '8.5.2'
        creates_path: 'C:\Program Files\Notepad++\notepad++.exe'
        state: present
      when: ansible_os_family == 'Windows'
