@@ -1,13 +1,17 @@
----
-- name: Notepad++ installation Playbook
-  hosts: 192.168.1.15
+- hosts: all
   tasks:
-   - name: Installing Notepad++
-     win_package:
-       path: '\\192.168.1.45\softs\npp.8.5.2.Installer.x64'
-       arguments: '/S'
-       product_id: 'Notepad++'
-       creates_version: '8.5.2'
-       creates_path: 'C:\Program Files\Notepad++\notepad++.exe'
-       state: present
-     when: ansible_os_family == 'Windows'
+  - name: Install Admin Tools
+    chocolatey.chocolatey.win_chocolatey:
+        name: '{{ item }}'
+        state: present
+        pinned: yes
+        architecture: x86
+        force: yes
+    with_items:
+    - 7zip
+    - procexp
+    - putty
+    - notepadplusplus.install
+    - windirstat
+    - git
+    - winscp
