@@ -2,7 +2,7 @@
 
 - name: Installing Apache MSI 
 
-  hosts: win 
+  hosts: 192.168.4.125 
 
   tasks:
 
