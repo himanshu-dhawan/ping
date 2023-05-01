@@ -1,5 +1,3 @@
-Geekflare@MSEDGEWIN10 ~
-$ vi msi.yml
 ---
 - name: Installing Apache MSI 
   hosts: win 
