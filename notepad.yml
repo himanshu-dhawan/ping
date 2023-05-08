@@ -1,8 +1,14 @@
 ---
-- name: Chocolatey
+- name: win_chocolatey module demo
   hosts: all
-  tasks: null
-- name: Install notepadplusplus version 6.6
-  win_chocolatey:
-    name: notepadplusplus
-    version: "6.6"
+  become: false
+  gather_facts: false
+  vars:
+    - packages:
+      - git
+      - notepadplusplus
+  tasks:
+    - name: install packages
+      chocolatey.chocolatey.win_chocolatey:
+        name: "{{ packages }}"
+        state: present
