@@ -2,7 +2,8 @@
 - name: "Chocolatey"
   hosts: all
   tasks:
-    - name: Ensure Chocolatey itself is installed and use internal repo as source
+    - name: Ensure Chocolatey installed from internal repo
   win_chocolatey:
     name: chocolatey
-    source: http://someserver/chocolatey
+    state: present
+    source: https://github.com/himanshu-dhawan/ping.git/ChocolateyInstall.ps1
