@@ -1,52 +1,9 @@
 ---
-- name: Install default apps 
-  hosts: all 
+- name: Install default apps
+  hosts: all
   gather_facts: false
-  tasks: 
-#Upgrade all instaled packages  
-  - name: Upgrade installed packages
-    win_chocolatey:
-      name: all
-      state: latest
-   
-  - name: install adobeReader
-    win_chocolatey:
-      name: adobereader
-      state: present
-
-  - name: install Office365
-    win_chocolatey:
-      name: office365business
-      state: present
-#Install a O365 version and don't install described apps      
-      package_params: " ' /productid:O365ProPlusRetail /Exclude:Access Groove Lync Publisher ' "
-    
-  - name: install GoogleChrome
-    win_chocolatey:
-      name: googlechrome
-      state: present
-
-  - name: install MS Teams  
-    win_chocolatey:
-      name: microsoft-teams
-      state: present
-
-#install 7zip from Internet
-  - name: Download the 7-Zip package
-      win_get_url:
-        url: https://www.7-zip.org/a/7z1701-x64.msi
-        dest: C:\temp\7z.msi
-
-#Create folder at client
-  - name: Create C:\temp
-    win_file:
-      path: C:\temp
-      state: directory  
-
-#Copy a file
-  - name: Copy a file
-    win_copy:
-      src: files/installer.exe
-      dest: C:\temp\installer.exe
-
-#save as defaul_inst.yaml
+  tasks:
+    - name: install adobeReader
+  win_chocolatey:
+    name: adobereader
+    state: present
