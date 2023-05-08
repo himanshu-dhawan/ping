@@ -1,11 +1,52 @@
-- name: Check to see if notepad is installed
-  win_stat: path='C:\Program Files (x86)\notepad'
-  register: notepad_installed
-- name: Download notepad 
-  win_get_url:
-    url: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.2/npp.8.5.2.Installer.x64.exe'
-    dest: 'c:\temp\npp.8.5.2.Installer.x64.exe'
-  when: not msbuild_installed.stat.exists
-- name: Install npp.8.5.2.Installer.x64.exe
-  raw: 'c:\temp\npp.8.5.2.Installer.x64.exe /Quiet /NoRestart /Full'
-  when: not notepad_installed.stat.exists
+---
+- name: Install default apps 
+  hosts: all 
+  gather_facts: false
+  tasks: 
+#Upgrade all instaled packages  
+  - name: Upgrade installed packages
+    win_chocolatey:
+      name: all
+      state: latest
+   
+  - name: install adobeReader
+    win_chocolatey:
+      name: adobereader
+      state: present
+
+  - name: install Office365
+    win_chocolatey:
+      name: office365business
+      state: present
+#Install a O365 version and don't install described apps      
+      package_params: " ' /productid:O365ProPlusRetail /Exclude:Access Groove Lync Publisher ' "
+    
+  - name: install GoogleChrome
+    win_chocolatey:
+      name: googlechrome
+      state: present
+
+  - name: install MS Teams  
+    win_chocolatey:
+      name: microsoft-teams
+      state: present
+
+#install 7zip from Internet
+  - name: Download the 7-Zip package
+      win_get_url:
+        url: https://www.7-zip.org/a/7z1701-x64.msi
+        dest: C:\temp\7z.msi
+
+#Create folder at client
+  - name: Create C:\temp
+    win_file:
+      path: C:\temp
+      state: directory  
+
+#Copy a file
+  - name: Copy a file
+    win_copy:
+      src: files/installer.exe
+      dest: C:\temp\installer.exe
+
+#save as defaul_inst.yaml
