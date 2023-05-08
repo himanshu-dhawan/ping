@@ -1,14 +1,18 @@
----
-- name: win_chocolatey module demo
-  hosts: all
-  become: false
-  gather_facts: false
-  vars:
-    - packages:
-      - git
-      - notepadplusplus
+- hosts: all
+  gather_facts: no
   tasks:
-    - name: install packages
-      chocolatey.chocolatey.win_chocolatey:
-        name: "{{ packages }}"
-        state: present
+  - name: install chocolatey
+    win_chocolatey:
+       name: chocolatey
+       state: present
+
+  - name: disable enhanced exit codes
+    win_chocolatey:
+       win_shell: C:\ProgramData\chocolatey\bin\choco.exe feature disable--
+       name: "useEnhancedExitCodes"
+       #state: disabled
+
+  - name: install notepadplusplus
+    win_chocolatey:
+       name: notepadplusplus
+       state: present
