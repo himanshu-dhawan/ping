@@ -1,5 +1,5 @@
 - name: "Chocolatey"
-  hosts: windows
+  hosts: all
   tasks:
     - name: update
       win_chocolatey:
