@@ -1,8 +1,9 @@
 - name: "Chocolatey"
   hosts: all
   tasks:
-    - name: update
+    - name: Install chocolatey
       win_chocolatey:
-           name: all
-           state: latest
-           ignore_checksums: yes
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+          state: present
