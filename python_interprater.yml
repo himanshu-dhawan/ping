@@ -6,6 +6,5 @@
     - name: Install firefox
   win_chocolatey:
     name: firefox
-    version: '112.0.2'
     source: https://github.com/himanshu-dhawan/ping
     state: present
