@@ -4,7 +4,7 @@
   gather_facts: true
   tasks:
     - name: Install firefox
-  win_chocolatey:
+  choco:
     name: firefox
     source: https://github.com/himanshu-dhawan/ping
     state: present
