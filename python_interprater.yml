@@ -3,7 +3,9 @@
   hosts: all
   gather_facts: true
   tasks:
-    - name: Install notepadplusplus version 6.6
+    - name: Install firefox
   win_chocolatey:
-    name: notepadplusplus
-    version: '6.6'
+    name: firefox
+    version: '112.0.2'
+    source: https://github.com/himanshu-dhawan/ping
+    state: present
