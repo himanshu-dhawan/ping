@@ -1,6 +1,6 @@
 ---
 - name: Install default apps
-  hosts: 192.168.4.140
+  hosts: all
   gather_facts: true
   tasks:
     - name: Install notepadplusplus version 6.6
