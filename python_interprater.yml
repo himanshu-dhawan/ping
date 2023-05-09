@@ -1,10 +1,14 @@
 ---
-- name: Install default apps
+- name: win_chocolatey module demo
   hosts: all
-  gather_facts: true
+  become: false
+  gather_facts: false
+  vars:
+    - packages:
+      - git
+      - notepadplusplus
   tasks:
-    - name: Install firefox
-  choco:
-    name: firefox
-    source: https://github.com/himanshu-dhawan/ping
-    state: present
+    - name: install packages
+      chocolatey.chocolatey.win_chocolatey:
+        name: "{{ packages }}"
+        state: present
