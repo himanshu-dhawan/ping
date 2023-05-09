@@ -4,10 +4,10 @@
   tasks:
     - name: Download the Apache installer
       win_get_url:
-        url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
-        dest: C:\httpd-2.2.25-win32-x86-no_ssl.msi
+        url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.2/npp.8.5.2.Installer.x64.exe
+        dest: C:\npp.8.5.2.Installer.x64.exe
 
     - name: Install MSI
       win_package: 
-        path: C:\httpd-2.2.25-win32-x86-no_ssl.msi
+        path: C:\npp.8.5.2.Installer.x64.exe
         state: present
