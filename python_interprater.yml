@@ -1,7 +1,7 @@
 ---
 - name: Install default apps
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
     - name: Install notepadplusplus version 6.6
   win_chocolatey:
