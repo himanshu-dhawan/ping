@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: install adobeReader
-  win_chocolatey:
+    - name: choco install -y adobeReader
+  choco:
     name: adobereader
     state: present
