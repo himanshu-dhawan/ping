@@ -1,9 +1,0 @@
----
-- name: Install default apps
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: choco install -y adobeReader
-  choco:
-    name: adobereader
-    state: present
