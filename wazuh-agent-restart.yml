@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - name: Stop service wazuh-agent
+      win_service:
+        name: wazuh-agent
+        state: stopped
