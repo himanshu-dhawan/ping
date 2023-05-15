@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-    - name: Get disk facts
-      win_command: notepad
-      register: usage
-    - debug: msg="{{ usage.stdout }}"
+    - name: run an executable using win_command
+      win_command: notepad.exe
+    - name: run a cmd command
+      win_command: cmd.exe /c mkdir C:\test
