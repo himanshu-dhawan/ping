@@ -1,9 +1,9 @@
 ---
-- hosts: win
+- hosts: all
   tasks:
-    - name: Uninstall 7-Zip from the exe
+    - name: Uninstall VLC 
       win_package:
-        path: C:\Program Files\7-Zip\Uninstall.exe
-        product_id: 7-Zip
+        path: C:\Program Files(x86)\ViedoLAN\Uninstall.exe
+        product_id: VLC
         arguments: /S
         state: absent
