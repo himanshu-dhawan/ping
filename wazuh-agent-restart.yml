@@ -3,5 +3,5 @@
   tasks:
     - name: Stop service wazuh-agent
       win_service:
-        name: wazuh-agent
+        name: wazuh
         state: stopped
