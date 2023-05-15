@@ -1,18 +1,7 @@
+---
 - hosts: all
-  gather_facts: no
   tasks:
-  - name: install chocolatey
-    win_chocolatey:
-       name: chocolatey
-       state: present
-
-  - name: disable enhanced exit codes
-    win_chocolatey:
-       win_shell: C:\ProgramData\chocolatey\bin\choco.exe feature disable--
-       name: "useEnhancedExitCodes"
-       #state: disabled
-
-  - name: install notepadplusplus
-    win_chocolatey:
-       name: notepadplusplus
-       state: present
+    - name: Get disk facts
+      win_command: notepad
+      register: usage
+    - debug: msg="{{ usage.stdout }}"
