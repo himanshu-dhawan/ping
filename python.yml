@@ -1,0 +1,27 @@
+---
+- name: My playbook
+  hosts: all
+
+  tasks:
+  - name: Verify python installed
+    win_shell: python --version
+    register: result
+
+  - debug:
+      msg: "{{ result.stdout }}"
+
+  - name: Find python binary
+    win_shell: (get-command python).Source
+    register: result
+
+  - debug:
+      msg: "{{ result.stdout }}"
+
+  - name: Set where python interpreter is
+    set_fact:
+      ansible_python_interpretor: "{{ result.stdout_lines[0] }}"
+
+  - name: Create tmp directory
+    file:
+      path: C:\tmp
+      state: directory
