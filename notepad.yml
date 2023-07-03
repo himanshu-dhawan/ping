@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: Install git
-  win_chocolatey:
+  choco:
     name: git
     state: present
 
